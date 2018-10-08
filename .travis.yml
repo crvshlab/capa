@@ -3,7 +3,7 @@ os: osx
 osx_image: xcode10
 
 script:
-  - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+  - xcrun instruments -w "iPhone 8 (12.0)"
   - xcrun simctl io booted recordVideo test.mp4&
   - sleep 10 
   - killall -SIGINT simctl
