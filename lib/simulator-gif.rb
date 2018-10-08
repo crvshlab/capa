@@ -1,5 +1,5 @@
-require_relative 'ios-simulator-gif/video_recorder'
-require_relative 'ios-simulator-gif/gif_generator'
+require_relative 'simulator-gif/video_recorder'
+require_relative 'simulator-gif/gif_generator'
 
 def command?(command)
   system("which #{command} > /dev/null 2>&1")

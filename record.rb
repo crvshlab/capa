@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 
-require_relative 'lib/ios-simulator-gif'
+require_relative 'lib/simulator-gif'
