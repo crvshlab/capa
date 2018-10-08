@@ -3,4 +3,5 @@ os: osx
 osx_image: xcode10
 
 script:
+  - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
   - xcrun simctl io booted recordVideo test.mp4
