@@ -1,4 +1,5 @@
-video.*
+*.mp4*
+*.mov*
 *.gem
 *.rbc
 /.config

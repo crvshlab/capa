@@ -7,8 +7,6 @@ end
 
 abort('Please install gifify: https://github.com/vvo/gifify') unless command?('gifify')
 
-exit unless $PROGRAM_NAME == __FILE__
-
 @video_filename = ARGV.count == 1 ? ARGV[0] : 'video.mp4'
 
 Signal.trap("SIGINT") do
