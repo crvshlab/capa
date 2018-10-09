@@ -7,8 +7,18 @@
 When developing an iOS app within a team that contributes to the code base doing Pull Requests, ~~sometimes~~ it's hard to visualize how the changes will look like in a running App just by looking at the diff. You can help your colleagues by adding an animated GIF into the Pull Request description and this tool wants to make it very simple for you.
 
 ## Getting started
-1. Install [gifify](https://github.com/vvo/gifify)
-2. Install _simulator-gif_: `gem install simulator-gif`
+1. Install _[gifify](https://github.com/vvo/gifify)_
+```sh
+brew install node
+brew install ffmpeg --with-libass --with-fontconfig
+brew install imagemagick --with-fontconfig
+brew install giflossy
+npm install -g gifify
+```
+2. Install _simulator-gif_
+```
+gem install simulator-gif
+```
 
 ## Usage
 `simulator-gif video.mp4`

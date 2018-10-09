@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/simulator-gif/emulator_recorder'
+require_relative '../lib/simulator-gif/gif_generator'
+
+def command?(command)
+  system("which #{command} > /dev/null 2>&1")
+end
+
+abort('Please install adb') unless command?('adb')
+abort('Please install gifify: https://github.com/vvo/gifify') unless command?('gifify')
+
+@video_filename = ARGV.count == 1 ? ARGV[0] : 'video.mp4'
+
+recorder = EmulatorRecorder.new(filename: @video_filename)
+generator = GIFGenerator.new(input_video: @video_filename, output_gif: "#{@video_filename}.gif")
+
+Signal.trap("SIGINT") do
+  recorder.stop
+  recorder.pull_video_from_emulator
+  generator.generate
+  exit 0
+end
+
+video = recorder.record
+puts "Sleeping..."

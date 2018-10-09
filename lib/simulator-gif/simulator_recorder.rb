@@ -1,6 +1,6 @@
 require_relative 'string'
 
-class VideoRecorder
+class SimulatorRecorder
   def initialize(filename: '')
     abort('Please provide a name for the video') if filename.blank?
     @filename = filename

@@ -1,4 +1,4 @@
-require_relative 'simulator-gif/video_recorder'
+require_relative 'simulator-gif/simulator_recorder'
 require_relative 'simulator-gif/gif_generator'
 
 def command?(command)
@@ -14,6 +14,6 @@ Signal.trap("SIGINT") do
   generator.generate
 end
 
-recorder = VideoRecorder.new(filename: @video_filename)
+recorder = SimulatorRecorder.new(filename: @video_filename)
 video = recorder.record
 
