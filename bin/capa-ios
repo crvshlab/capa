@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/simulator-gif/simulator_recorder'
-require_relative '../lib/simulator-gif/gif_generator'
+require_relative '../lib/capa/simulator_recorder'
+require_relative '../lib/capa/gif_generator'
 
 def command?(command)
   system("which #{command} > /dev/null 2>&1")

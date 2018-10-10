@@ -1,7 +1,7 @@
-# simulator-gif
+# capa
 > Record animated GIFs (and videos) from the iOS Simulator and Android Emulator. Because a GIF is worth a thousand lines of code.
 
-![](https://github.com/crvshlab/simulator-gif/raw/master/readme_example.gif)
+![](readme_example.gif)
 
 ## Motivation
 When developing a mobile app within a team that contributes to the code base doing Pull Requests, ~~sometimes~~ it's hard to visualize how the changes will look like in a running App just by looking at the diff. You can help your colleagues by adding an animated GIF into the Pull Request description and this tool wants to make it very simple for you.
