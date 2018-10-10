@@ -8,7 +8,7 @@ class EmulatorRecorder
 
   def record
     abort("You need exactly one emulator or device connected") unless can_record?
-    puts 'Trying to capture video... Use CTRL+C to save'
+    puts 'Capturing video... Use CTRL+C to save'
     # Might want to add '--size 720x1280' flag. That's the maximum permitted size for video recordings
     # We can specify the device, in case there is more than one connected: -s emulator-5554
     message = `adb shell screenrecord --verbose #{emulator_video_path}`

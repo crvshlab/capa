@@ -7,8 +7,17 @@ class SimulatorRecorder
   end
 
   def record
-    puts 'Trying to capture video... Use CTRL+C to save'
+    abort unless can_record?
+    puts 'Capturing video... Use CTRL+C to save'
     `xcrun simctl io booted recordVideo #{@filename}`
     return @filename
+  end
+
+  private
+
+  def can_record?
+    # Will output 'No devices are booted.' if Simulator.app is closed
+    `xcrun simctl io booted enumerate`
+    $?.exitstatus == 0
   end
 end
