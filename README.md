@@ -16,15 +16,15 @@ brew install giflossy
 npm install -g gifify
 ```
 
-2. Install _simulator-gif_
-```gem install simulator-gif```
+2. Install _capa_
+```gem install capa```
 
 ## Usage
 ### iOS Simulator
-```simulator-gif video.mp4```
+```capa-ios video.mp4```
 
 ### Android Emulator
-```emulator-gif video.mp4```
+```capa-android video.mp4```
 
 Limitations of the [screenrecord utility](https://developer.android.com/studio/command-line/adb#screenrecord), the Android Emulator recording tool:
 
@@ -35,6 +35,7 @@ Limitations of the [screenrecord utility](https://developer.android.com/studio/c
 
 ## Acknowledgments
 This tool is a wrapper around `xcrun simctl`, `adb` and [gifify](https://github.com/vvo/gifify)
+> If your pictures aren't good enough, you aren't close enough.
 
 ---
 
