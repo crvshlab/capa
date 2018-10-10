@@ -23,4 +23,3 @@ Signal.trap("SIGINT") do
 end
 
 video = recorder.record
-puts "Sleeping..."
