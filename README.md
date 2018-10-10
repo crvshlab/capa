@@ -37,8 +37,6 @@ Limitations of the [screenrecord utility](https://developer.android.com/studio/c
 This tool is a wrapper around `xcrun simctl`, `adb` and [gifify](https://github.com/vvo/gifify)
 > If your pictures aren't good enough, you aren't close enough.
 
----
-
 ## MIT License
 Copyright (c) 2018 crvsh GmbH
 
