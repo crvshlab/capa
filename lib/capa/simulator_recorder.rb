@@ -10,7 +10,6 @@ class SimulatorRecorder
     abort unless can_record?
     puts 'Capturing video... Use CTRL+C to save'
     `xcrun simctl io booted recordVideo #{@filename}`
-    return @filename
   end
 
   private
