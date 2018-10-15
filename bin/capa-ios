@@ -14,7 +14,6 @@ abort('Please install gifify: https://github.com/vvo/gifify') unless command?('g
 recorder = SimulatorRecorder.new(filename: @video_filename)
 
 Signal.trap("SIGINT") do
-  sleep(0.5)
   generator = GIFGenerator.new(input_video: @video_filename, output_gif: "#{@video_filename}.gif")
   generator.generate
 end

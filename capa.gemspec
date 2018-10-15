@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'capa'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.summary     = "Record animated GIFs (and videos) from the iOS Simulator and the Android Emulator."
   s.description = "capa can record animated GIFs (and videos) from the iOS Simulator and the Android Emulator because a GIF is worth a thousand lines of code."
   s.authors     = ["Alex Salom"]

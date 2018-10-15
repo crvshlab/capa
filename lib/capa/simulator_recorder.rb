@@ -9,7 +9,13 @@ class SimulatorRecorder
   def record
     abort unless can_record?
     puts 'Capturing video... Use CTRL+C to save'
-    `xcrun simctl io booted recordVideo #{@filename}`
+
+    job = fork do
+      exec("xcrun simctl io booted recordVideo #{@filename}")
+    end
+
+    Process.detach(job)
+    Process.waitall
   end
 
   private
