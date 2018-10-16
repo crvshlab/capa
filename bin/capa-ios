@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/capa/simulator_recorder'
-require_relative '../lib/capa/gif_generator'
+require_relative '../lib/capa'
 
 def command?(command)
   system("which #{command} > /dev/null 2>&1")
 end
 
 abort('Please install gifify: https://github.com/vvo/gifify') unless command?('gifify')
-
-@video_filename = ARGV.count == 1 ? ARGV[0] : 'video.mp4'
 
 recorder = SimulatorRecorder.new(filename: @video_filename)
 
