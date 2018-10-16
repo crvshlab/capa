@@ -29,12 +29,12 @@ When developing a mobile app within a team that contributes to the code base doi
 ## Usage
 ### iOS Simulator
 ```shell
-> capa-ios video.mp4
+> capa-ios -o video.mp4
 ```
 
 ### Android Emulator
 ```shell
-> capa-android video.mp4
+> capa-android -o video.mp4
 ```
 
 Limitations of the [screenrecord utility](https://developer.android.com/studio/command-line/adb#screenrecord), the Android Emulator recording tool:
