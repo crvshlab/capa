@@ -3,6 +3,7 @@ require_relative './capa/helper'
 require_relative './capa/emulator_recorder'
 require_relative './capa/simulator_recorder'
 require_relative './capa/gif_generator'
+require_relative './capa/version'
 
 require 'optparse'
 require "rubygems"
@@ -22,7 +23,7 @@ optparse = OptionParser.new do |opts|
   end
 
   opts.on("-v", "--version", "Display version") do
-    puts Gem::Specification::load("../capa.gemspec").version
+    puts Capa::VERSION
     exit
   end
 
