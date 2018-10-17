@@ -38,6 +38,13 @@ capa-ios -o recording
 capa-android -o recording
 ```
 
+Limitations of the [screenrecord utility](https://developer.android.com/studio/command-line/adb#screenrecord), the Android Emulator recording tool:
+
+* Audio is not recorded with the video file.
+* Video recording is not available for devices running Wear OS.
+* Some devices might not be able to record at their native display resolution. If you encounter problems with screen recording, try using a lower screen resolution.
+* Rotation of the screen during recording is not supported. If the screen does rotate during recording, some of the screen is cut off in the recording.
+
 
 You can find all the options from either command with `--help`
 
@@ -51,13 +58,6 @@ Usage: capa-ios [options]
     -v, --version                    Display version
     -h, --help                       Display help
 ```
-
-Limitations of the [screenrecord utility](https://developer.android.com/studio/command-line/adb#screenrecord), the Android Emulator recording tool:
-
-* Audio is not recorded with the video file.
-* Video recording is not available for devices running Wear OS.
-* Some devices might not be able to record at their native display resolution. If you encounter problems with screen recording, try using a lower screen resolution.
-* Rotation of the screen during recording is not supported. If the screen does rotate during recording, some of the screen is cut off in the recording.
 
 ## Acknowledgments
 This tool is a wrapper around `xcrun simctl`, `adb` and [gifify](https://github.com/vvo/gifify)
