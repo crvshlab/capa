@@ -18,7 +18,7 @@ optparse = OptionParser.new do |opts|
   usage =  "Usage: #{$0} [options]".bold
   opts.banner = "#{explanation} #{usage}"
 
-  opts.on( '-o', '--output NAME', "Output filename. GIF file will get '.gif' added as suffix. Defaults to recording.mp4 and recording.mp4.gif" ) do  |o|
+  opts.on( '-o', '--output NAME', "Output filename. Defaults to 'recording'" ) do  |o|
     options[:output] = o
   end
 
@@ -36,4 +36,4 @@ end
 # The parse! method also removes any options it finds from ARGV.
 optparse.parse!
 
-@video_filename = options[:output] || 'recording.mp4'
+@video_filename = "#{options[:output] || 'recording'}.mp4"

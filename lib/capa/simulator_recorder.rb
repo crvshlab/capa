@@ -8,14 +8,17 @@ class SimulatorRecorder
 
   def record
     abort unless can_record?
-    puts 'Capturing video... Use CTRL+C to save'
 
-    job = fork do
-      exec("xcrun simctl io booted recordVideo #{@filename}")
+    Signal.trap("SIGINT") { raise Capa::UserAbort }
+    Signal.trap("SIGTSTP") { raise Capa::UserAbort }
+
+    Thread.new do
+      `xcrun simctl io booted recordVideo #{@filename}`
     end
 
-    Process.detach(job)
-    Process.waitall
+    puts 'Capturing video... Press ENTER to save'
+    p = gets.chomp
+    `killall -SIGINT simctl`
   end
 
   private

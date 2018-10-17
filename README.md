@@ -23,18 +23,30 @@ When developing a mobile app within a team that contributes to the code base doi
 
 2. Install _capa_
 ```shell
-> gem install capa
+gem install capa
 ```
 
 ## Usage
-### iOS Simulator
 ```shell
-> capa-ios -o video.mp4
+capa-ios -o recording
 ```
 
-### Android Emulator
 ```shell
-> capa-android -o video.mp4
+capa-android -o recording
+```
+You can find all the options from either command with `--help`
+
+```shell
+> capa-ios -h
+or
+> capa-android -h
+The command $ capa-ios will generate a video and a GIF from the iOS Simulator
+The command $ capa-android will generate a video and a GIF from the Android Emulator .
+
+Usage: capa-ios [options]
+    -o, --output NAME                Output filename. Defaults to 'recording'
+    -v, --version                    Display version
+    -h, --help                       Display help
 ```
 
 Limitations of the [screenrecord utility](https://developer.android.com/studio/command-line/adb#screenrecord), the Android Emulator recording tool:

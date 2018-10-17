@@ -1,4 +1,5 @@
 require_relative 'string'
+require_relative 'helper'
 
 class EmulatorRecorder
   def initialize(filename: '')
@@ -8,18 +9,25 @@ class EmulatorRecorder
 
   def record
     abort("You need exactly one emulator or device connected") unless can_record?
-    puts 'Capturing video... Use CTRL+C to save'
-    # Might want to add '--size 720x1280' flag. That's the maximum permitted size for video recordings
-    # We can specify the device, in case there is more than one connected: -s emulator-5554
-    message = `adb shell screenrecord --verbose #{emulator_video_path}`
     
-    abort("Maximum permitted resolution is 720x1280. Minimum Android version is Marshmallow.\n"\
-      "Please choose a different device.\n"\
-      "Tip: Galaxy Nexus works great!") if /err=-38/ =~ message
-  end
+    Signal.trap("SIGINT") { raise Capa::UserAbort }
+    Signal.trap("SIGTSTP") { raise Capa::UserAbort }
 
-  def stop
-    `killall -SIGINT adb`
+    Thread.new do
+      # Might want to add '--size 720x1280' flag. That's the maximum permitted size for video recordings
+      # We can specify the device, in case there is more than one connected: -s emulator-5554
+      message = `adb shell screenrecord --verbose #{emulator_video_path}`
+      
+      abort("Maximum permitted resolution is 720x1280. Minimum Android version is Marshmallow.\n"\
+        "Please choose a different device.\n"\
+        "Tip: Galaxy Nexus works great!") if /err=-38/ =~ message
+    end
+
+    puts 'Capturing video... Press ENTER to save'
+    p = gets.chomp
+    `adb shell killall -SIGINT screenrecord`
+    sleep 0.5
+    pull_video_from_emulator
   end
 
   def pull_video_from_emulator
