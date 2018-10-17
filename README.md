@@ -27,21 +27,24 @@ gem install capa
 ```
 
 ## Usage
+
+#### iOS Simulator
 ```shell
 capa-ios -o recording
 ```
 
+#### Android Emulator
 ```shell
 capa-android -o recording
 ```
+
+
 You can find all the options from either command with `--help`
 
 ```shell
 > capa-ios -h
-or
-> capa-android -h
-The command $ capa-ios will generate a video and a GIF from the iOS Simulator
-The command $ capa-android will generate a video and a GIF from the Android Emulator .
+The command $capa-ios will generate a video and a GIF from the iOS Simulator
+The command $capa-android will generate a video and a GIF from the Android Emulator .
 
 Usage: capa-ios [options]
     -o, --output NAME                Output filename. Defaults to 'recording'
