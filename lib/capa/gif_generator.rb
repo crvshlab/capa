@@ -12,8 +12,20 @@ class GIFGenerator
     abort("File not found: #{@input_video}") unless File.exists?(@input_video)
     puts "Generating GIF, please wait..."
     `gifify #{@input_video} -o #{@output_gif} --resize 300:-1 --colors 220 --fps 7`
-    video_directory = Dir.pwd
-    puts "Video: #{video_directory}/#{@input_video}"
-    puts "GIF: #{video_directory}/#{@output_gif}"
+    output_directory = Dir.pwd
+    video_path = "#{output_directory}/#{@input_video}"
+    gif_path = "#{output_directory}/#{@output_gif}"
+    
+    if File.exists?(video_path)
+      puts "Video: #{video_path}"
+    else
+      puts "Error generating video"
+    end
+
+    if File.exists?(gif_path)
+      puts "GIF: #{gif_path}"
+    else
+      puts "Error generating GIF"
+    end
   end
 end
