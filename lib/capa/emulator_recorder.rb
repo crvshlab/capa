@@ -1,5 +1,6 @@
 require_relative 'string'
 require_relative 'helper'
+require_relative 'recorder_factory'
 
 class EmulatorRecorder < Recorder
   def initialize(filename: '')
@@ -30,12 +31,14 @@ class EmulatorRecorder < Recorder
     pull_video_from_emulator
   end
 
+  def cancel
+    `adb shell killall screenrecord`
+  end
+
   def pull_video_from_emulator
     # We can specify the device, in case there is more than one connected: -s emulator-5554
     puts `adb pull #{emulator_video_path}`
   end
-
-  private
 
   def emulator_video_path
     "/sdcard/#{@filename}"

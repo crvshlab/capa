@@ -22,11 +22,15 @@ class SimulatorRecorder < Recorder
     `killall -SIGINT simctl`
   end
 
-  private
+  def cancel
+    if system('pgrep simctl > /dev/null')
+      `killall simctl`
+    end
+  end
 
   def can_record?
     # Will output 'No devices are booted.' if Simulator.app is closed
-    `xcrun simctl io booted enumerate`
+    `xcrun simctl io booted enumerate > /dev/null 2>&1`
     $?.exitstatus == 0
   end
 end

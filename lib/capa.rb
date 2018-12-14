@@ -22,6 +22,10 @@ optparse = OptionParser.new do |opts|
     options[:output] = o
   end
 
+  opts.on( '-p', '--platform NAME', "Platform. simulator for iOS Simulator, emulator for Android Emulator. Defaults to 'recording'" ) do  |o|
+    options[:output] = o
+  end
+
   opts.on("-v", "--version", "Display version") do
     puts Capa::VERSION
     exit
@@ -36,4 +40,25 @@ end
 # The parse! method also removes any options it finds from ARGV.
 optparse.parse!
 
-@video_filename = "#{options[:output] || 'recording'}.mp4"
+video_filename = "#{options[:output] || 'recording'}.mp4"
+
+recorder_factory = RecorderFactory.new(filename: video_filename)
+platform = platform = options[:platform] || recorder_factory.infer_platform
+recorder = recorder_factory.create(from_platform: platform)
+
+abort("Please choose a platform. Help: #{$0} -h") if recorder.nil?
+
+puts platform
+puts recorder
+
+generator = GIFGenerator.new(input_video: video_filename, output_gif: "#{video_filename}.gif")
+
+begin
+  recorder.record
+rescue Capa::UserAbort
+  puts 'Exiting...'
+  recorder.cancel
+  exit
+end
+
+generator.generate
