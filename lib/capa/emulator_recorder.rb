@@ -24,7 +24,7 @@ class EmulatorRecorder < Recorder
         "Tip: Galaxy Nexus works great!") if /err=-38/ =~ message
     end
 
-    puts 'Capturing video... Press ENTER to save'
+    puts 'Capturing video from the Android Emulator... Press ENTER to save'
     p = gets.chomp
     `adb shell killall -SIGINT screenrecord`
     sleep 0.5
@@ -45,6 +45,7 @@ class EmulatorRecorder < Recorder
   end
 
   def can_record?
+    return false if command?('adb') == false
     # Example response
     #
     # "List of devices attached\n

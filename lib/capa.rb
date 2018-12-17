@@ -13,16 +13,15 @@ options = {}
 
 # Set up the options you are looking for
 optparse = OptionParser.new do |opts|
-  explanation = "> The command #{"$ capa-ios".bold} will generate a video and a GIF from the iOS Simulator\ 
-> The command #{"$ capa-android".bold} will generate a video and a GIF from the Android Emulator .\n\n"
+  explanation = "> #{"$ capa".bold} will generate a video and a GIF from the iOS Simulator or the Android Emulator. #{"capa".bold} will try to infer the platform. Alternatively you can select which platform you wish to record in.\n\n"
   usage =  "Usage: #{$0} [options]".bold
   opts.banner = "#{explanation} #{usage}"
 
-  opts.on( '-o', '--output NAME', "Output filename. Defaults to 'recording'" ) do  |o|
+  opts.on( '-o', '--output NAME', "Output filename. Defaults to #{"recording".italic}" ) do  |o|
     options[:output] = o
   end
 
-  opts.on( '-p', '--platform NAME', "Platform. simulator for iOS Simulator, emulator for Android Emulator. Defaults to 'recording'" ) do  |o|
+  opts.on( '-p', '--platform NAME', "Available platforms: #{"ios".italic} and #{"android".italic}" ) do  |o|
     options[:output] = o
   end
 

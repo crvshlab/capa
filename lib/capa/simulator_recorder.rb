@@ -17,7 +17,7 @@ class SimulatorRecorder < Recorder
       `xcrun simctl io booted recordVideo #{@filename}`
     end
 
-    puts 'Capturing video... Press ENTER to save'
+    puts 'Capturing video from the iOS Simulator... Press ENTER to save'
     p = gets.chomp
     `killall -SIGINT simctl`
   end
@@ -29,6 +29,7 @@ class SimulatorRecorder < Recorder
   end
 
   def can_record?
+    return false if command?('xcrun') == false
     # Will output 'No devices are booted.' if Simulator.app is closed
     `xcrun simctl io booted enumerate > /dev/null 2>&1`
     $?.exitstatus == 0
