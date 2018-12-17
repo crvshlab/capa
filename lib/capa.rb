@@ -47,9 +47,6 @@ recorder = recorder_factory.create(from_platform: platform)
 
 abort("Please choose a platform. Help: #{$0} -h") if recorder.nil?
 
-puts platform
-puts recorder
-
 generator = GIFGenerator.new(input_video: video_filename, output_gif: "#{video_filename}.gif")
 
 begin
