@@ -1,7 +1,8 @@
 require_relative 'string'
 require_relative 'helper'
+require_relative 'recorder_factory'
 
-class EmulatorRecorder
+class EmulatorRecorder < Recorder
   def initialize(filename: '')
     abort('Please provide a name for the video') if filename.blank?
     @filename = filename
@@ -23,11 +24,15 @@ class EmulatorRecorder
         "Tip: Galaxy Nexus works great!") if /err=-38/ =~ message
     end
 
-    puts 'Capturing video... Press ENTER to save'
+    puts 'Capturing video from the Android Emulator... Press ENTER to save'
     p = gets.chomp
     `adb shell killall -SIGINT screenrecord`
     sleep 0.5
     pull_video_from_emulator
+  end
+
+  def cancel
+    `adb shell killall screenrecord`
   end
 
   def pull_video_from_emulator
@@ -35,13 +40,12 @@ class EmulatorRecorder
     puts `adb pull #{emulator_video_path}`
   end
 
-  private
-
   def emulator_video_path
     "/sdcard/#{@filename}"
   end
 
   def can_record?
+    return false if command?('adb') == false
     # Example response
     #
     # "List of devices attached\n

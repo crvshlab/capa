@@ -10,8 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Alex Salom"]
   s.email       = 'alex.salom@gmail.com'
   s.files       = Dir.glob("lib/**/*")
-  s.executables << 'capa-ios'
-  s.executables << 'capa-android'
+  s.executables << 'capa'
   s.homepage    = 'https://github.com/crvshlab/capa'
   s.license     = 'MIT'
 end
