@@ -8,7 +8,7 @@ class SimulatorRecorder < Recorder
   end
 
   def record
-    abort unless can_record?
+    abort("You need to open the iOS Simulator") unless can_record?
 
     Signal.trap("SIGINT") { raise Capa::UserAbort }
     Signal.trap("SIGTSTP") { raise Capa::UserAbort }
