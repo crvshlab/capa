@@ -17,12 +17,12 @@ optparse = OptionParser.new do |opts|
   usage =  "Usage: #{$0} [options]".bold
   opts.banner = "#{explanation} #{usage}"
 
-  opts.on( '-o', '--output NAME', "Output filename. Defaults to #{"recording".italic}" ) do  |o|
+  opts.on( '-o', '--output NAME', "Output filename. Defaults to #{"recording".italic}" ) do |o|
     options[:output] = o
   end
 
-  opts.on( '-p', '--platform NAME', "Available platforms: #{"ios".italic} and #{"android".italic}" ) do  |o|
-    options[:output] = o
+  opts.on( '-p', '--platform NAME', "Available platforms: #{"ios".italic} and #{"android".italic}" ) do |o|
+    options[:platform] = o
   end
 
   opts.on("-v", "--version", "Display version") do
