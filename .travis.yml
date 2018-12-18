@@ -2,7 +2,7 @@ branches:
   only:
     - master
 
-script: echo Deploying RubyGems
+script: bundle exec rspec
 
 deploy:
   provider: rubygems
