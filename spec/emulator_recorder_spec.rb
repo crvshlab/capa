@@ -14,6 +14,12 @@ describe EmulatorRecorder do
     end
   end
 
+  describe 'emulator video path' do
+    it 'should build the path correctly' do
+      expect(@sut.emulator_video_path).to be == "/sdcard/#{@filename}"
+    end
+  end
+
   describe 'can record' do
     context 'when adb is not available' do
       it 'should return false' do
