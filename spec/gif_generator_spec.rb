@@ -1,13 +1,12 @@
 require_relative "../lib/capa/gif_generator"
 
 describe GIFGenerator do
-  # include Capa
-
   before(:each) do
     @video_file = 'video'
     @gif_file = 'gif'
     @sut = GIFGenerator.new(input_video:  @video_file, output_gif: @gif_file)
   end
+  
   describe 'when initializing an object' do
     context 'when the parameters are invalid' do
       it 'should abort' do
