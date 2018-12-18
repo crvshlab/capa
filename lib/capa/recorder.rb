@@ -1,13 +1,13 @@
 class Recorder
   def record
-    raise 'not implemented'
+    raise NotImplementedError
   end
 
   def cancel
-    raise 'not implemented'
+    raise NotImplementedError
   end
 
   def can_record?
-    raise 'not implemented'
+    raise NotImplementedError
   end
 end
