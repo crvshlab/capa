@@ -14,6 +14,14 @@ describe EmulatorRecorder do
     end
   end
 
+  describe 'cancel' do
+    it 'should make the right system call' do
+      expect(@sut).to receive(:`).with("adb shell killall screenrecord")
+
+      @sut.cancel
+    end
+  end
+
   describe 'emulator video path' do
     it 'should build the path correctly' do
       expect(@sut.emulator_video_path).to be == "/sdcard/#{@filename}"
