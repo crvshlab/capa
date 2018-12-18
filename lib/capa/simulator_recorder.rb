@@ -1,5 +1,5 @@
 require_relative 'string'
-require_relative 'recorder_factory'
+require_relative 'recorder'
 
 class SimulatorRecorder < Recorder
   def initialize(filename: '')
