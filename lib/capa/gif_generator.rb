@@ -4,6 +4,7 @@ class GIFGenerator
   def initialize(input_video: '', output_gif: '')
     abort('Please provide a video to generate a GIF from') if input_video.blank?
     abort('Please provide a name for the GIF') if output_gif.blank?
+    abort("The names for the video and the GIF can't be the same") if output_gif == input_video
     @input_video = input_video
     @output_gif = output_gif
   end
