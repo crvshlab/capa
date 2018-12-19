@@ -29,7 +29,7 @@ describe EmulatorRecorder do
 
         allow(@sut).to receive(:can_record?).and_return(true)
         allow(@sut).to receive(:emulator_video_path).and_return(path)
-        #allow(Thread).to receive(:new).and_yield.and_return(Class.new { def join; end }.new)
+        allow(Thread).to receive(:new).and_yield.and_return(Class.new { def join; end }.new)
 
         expect(@sut).to receive(:`).ordered.with("adb shell screenrecord --verbose #{path}")
         expect(@sut).to receive(:`).ordered.with("adb shell killall -SIGINT screenrecord")
