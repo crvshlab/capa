@@ -49,8 +49,8 @@ describe SimulatorRecorder do
       context 'and the exit status is 0' do
         it 'should return true' do
           allow(@sut).to receive(:command?).with('xcrun').and_return(true)
-          allow($?).to receive(:exitstatus).and_return(0)
-
+          fork { exit 0 }
+          Process.wait
           expect(@sut).to receive(:`).with('xcrun simctl io booted enumerate > /dev/null 2>&1')
 
           expect(@sut.can_record?).to be == true
@@ -58,10 +58,10 @@ describe SimulatorRecorder do
       end
 
       context 'and the exit status different than 0' do
-        it 'should return true' do
+        it 'should return false' do
           allow(@sut).to receive(:command?).with('xcrun').and_return(true)
-          allow($?).to receive(:exitstatus).and_return(1)
-
+          fork { exit 1 }
+          Process.wait
           expect(@sut).to receive(:`).with('xcrun simctl io booted enumerate > /dev/null 2>&1')
 
           expect(@sut.can_record?).to be == false
