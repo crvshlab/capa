@@ -14,6 +14,28 @@ describe SimulatorRecorder do
     end
   end
 
+  describe 'cancel' do
+    context 'when we are recording' do
+      it 'should cancel the recording' do
+        allow(@sut).to receive(:system).with('pgrep simctl > /dev/null').and_return(true)
+        
+        expect(@sut).to receive(:`).with('killall simctl')
+
+        @sut.cancel
+      end
+    end
+
+    context 'when we are not recording' do
+      it 'should not cancel the recording' do
+        allow(@sut).to receive(:system).with('pgrep simctl > /dev/null').and_return(false)
+
+        expect(@sut).to_not receive(:`).with('killall simctl')
+
+        @sut.cancel
+      end
+    end
+  end
+
   describe 'can record' do
     context 'when xcrun is not available' do
       it 'should return false' do
@@ -22,7 +44,6 @@ describe SimulatorRecorder do
         expect(@sut.can_record?).to be == false
       end
     end
-
 
     context 'when xcrun is available available' do
       context 'and the exit status is 0' do
