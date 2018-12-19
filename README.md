@@ -46,9 +46,10 @@ Limitations of the [screenrecord utility](https://developer.android.com/studio/c
 
 You can find all the options from either command with `--help`
 
-```s
-> capa -h
-> capa will generate a video and a GIF from the iOS Simulator or the Android Emulator. capa will try to infer the platform. Alternatively you can select which platform you wish to record in.
+```shell
+$ capa -h
+> capa will generate a video and a GIF from the iOS Simulator or the Android Emulator. 
+capa will try to infer the platform. Alternatively you can select which platform you wish to record in.
 
  Usage: lib/capa.rb [options]
     -o, --output NAME                Output filename. Defaults to recording

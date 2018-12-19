@@ -14,6 +14,35 @@ describe EmulatorRecorder do
     end
   end
 
+  describe 'record' do
+    context 'when the emulator can not record' do
+      it 'should abort' do
+        allow(@sut).to receive(:can_record?).and_return(false)
+
+        expect { @sut.record }.to raise_error(SystemExit)
+      end
+    end
+
+    context 'when the emulator can record' do
+      it 'should start a recording' do
+        path = 'path'
+
+        allow(@sut).to receive(:can_record?).and_return(true)
+        allow(@sut).to receive(:emulator_video_path).and_return(path)
+
+        expect(@sut).to receive(:`).ordered.with("adb shell screenrecord --verbose #{path}")
+        expect(@sut).to receive(:`).ordered.with("adb shell killall -SIGINT screenrecord")
+        expect(@sut).to receive(:`).ordered.with("adb pull #{path}")
+        
+        expect(@sut).to receive(:sleep).with(0.5)
+
+        $stdin = StringIO.new("simulate press of a button\n")
+
+        @sut.record
+      end
+    end
+  end
+
   describe 'cancel' do
     it 'should make the right system call' do
       expect(@sut).to receive(:`).with("adb shell killall screenrecord")
