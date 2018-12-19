@@ -1,5 +1,7 @@
 # capa
 
+[![Build Status](https://travis-ci.com/crvshlab/capa.svg?branch=master)](https://travis-ci.com/crvshlab/capa)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c624bc228dbd91f46f57/test_coverage)](https://codeclimate.com/github/crvshlab/capa/test_coverage)
 [![Gem Version](https://badge.fury.io/rb/capa.svg)](https://badge.fury.io/rb/capa)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 > Record animated GIFs (and videos) from the iOS Simulator and Android Emulator. Because a GIF is worth a thousand lines of code.
@@ -46,9 +48,10 @@ Limitations of the [screenrecord utility](https://developer.android.com/studio/c
 
 You can find all the options from either command with `--help`
 
-```s
-> capa -h
-> capa will generate a video and a GIF from the iOS Simulator or the Android Emulator. capa will try to infer the platform. Alternatively you can select which platform you wish to record in.
+```shell
+$ capa -h
+> capa will generate a video and a GIF from the iOS Simulator or the Android Emulator. 
+capa will try to infer the platform. Alternatively you can select which platform you wish to record in.
 
  Usage: lib/capa.rb [options]
     -o, --output NAME                Output filename. Defaults to recording

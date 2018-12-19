@@ -1,3 +1,6 @@
+require_relative 'simulator_recorder'
+require_relative 'emulator_recorder'
+
 class RecorderFactory
   def initialize(filename: '')
     @recorders = {
@@ -16,19 +19,5 @@ class RecorderFactory
 
   def create(from_platform: '')
     @recorders[from_platform] unless from_platform.nil?
-  end
-end
-
-class Recorder
-  def record
-    raise 'not implemented'
-  end
-
-  def cancel
-    raise 'not implemented'
-  end
-
-  def can_record?
-    raise 'not implemented'
   end
 end
