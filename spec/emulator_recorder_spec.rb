@@ -31,6 +31,9 @@ describe EmulatorRecorder do
         allow(@sut).to receive(:emulator_video_path).and_return(path)
         allow(Thread).to receive(:new).and_yield.and_return(Class.new { def join; end }.new)
 
+
+        expect(Signal).to receive(:trap).with('SIGINT')
+        expect(Signal).to receive(:trap).with('SIGTSTP')
         expect(@sut).to receive(:`).ordered.with("adb shell screenrecord --verbose #{path}")
         expect(@sut).to receive(:`).ordered.with("adb shell killall -SIGINT screenrecord")
         expect(@sut).to receive(:`).ordered.with("adb pull #{path}")
