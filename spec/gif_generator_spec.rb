@@ -1,4 +1,5 @@
-require_relative "../lib/capa/gif_generator"
+require_relative 'spec_helper.rb'
+require_relative '../lib/capa/gif_generator'
 
 describe GIFGenerator do
   before(:each) do

@@ -1,4 +1,5 @@
-require_relative "../lib/capa/recorder"
+require_relative 'spec_helper.rb'
+require_relative '../lib/capa/recorder'
 
 describe Recorder do
   before(:each) do

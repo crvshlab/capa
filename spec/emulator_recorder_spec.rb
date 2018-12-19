@@ -1,3 +1,4 @@
+require_relative 'spec_helper.rb'
 require_relative '../lib/capa/emulator_recorder'
 
 describe EmulatorRecorder do
@@ -30,7 +31,7 @@ describe EmulatorRecorder do
         allow(@sut).to receive(:can_record?).and_return(true)
         allow(@sut).to receive(:emulator_video_path).and_return(path)
         allow(Thread).to receive(:new).and_yield.and_return(Class.new { def join; end }.new)
-
+        allow(@sut).to receive(:gets).and_return('')
 
         expect(Signal).to receive(:trap).with('SIGINT')
         expect(Signal).to receive(:trap).with('SIGTSTP')
@@ -39,8 +40,6 @@ describe EmulatorRecorder do
         expect(@sut).to receive(:`).ordered.with("adb pull #{path}")
         
         expect(@sut).to receive(:sleep).with(0.5)
-
-        $stdin = StringIO.new("simulate press of a button\n")
 
         @sut.record
       end

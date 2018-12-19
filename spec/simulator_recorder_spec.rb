@@ -1,3 +1,4 @@
+require_relative 'spec_helper.rb'
 require_relative '../lib/capa/simulator_recorder'
 
 describe SimulatorRecorder do
@@ -27,13 +28,12 @@ describe SimulatorRecorder do
       it 'should record' do
         allow(@sut).to receive(:can_record?).and_return(true)
         allow(Thread).to receive(:new).and_yield.and_return(Class.new { def join; end }.new)
+        allow(@sut).to receive(:gets).and_return('')
 
         expect(Signal).to receive(:trap).with('SIGINT')
         expect(Signal).to receive(:trap).with('SIGTSTP')
         expect(@sut).to receive(:`).ordered.with("xcrun simctl io booted recordVideo #{@filename}")
         expect(@sut).to receive(:`).ordered.with("killall -SIGINT simctl")
-
-        $stdin = StringIO.new("simulate press of a button\n")
 
         @sut.record
       end
