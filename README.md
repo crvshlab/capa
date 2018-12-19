@@ -1,5 +1,6 @@
 # capa
 
+[![Build Status](https://travis-ci.com/crvshlab/capa.svg?branch=master)](https://travis-ci.com/crvshlab/capa)
 [![Gem Version](https://badge.fury.io/rb/capa.svg)](https://badge.fury.io/rb/capa)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 > Record animated GIFs (and videos) from the iOS Simulator and Android Emulator. Because a GIF is worth a thousand lines of code.
