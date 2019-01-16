@@ -1,5 +1,5 @@
-require_relative 'simulator_recorder'
-require_relative 'emulator_recorder'
+require 'capa/simulator_recorder'
+require 'capa/emulator_recorder'
 
 class RecorderFactory
   def initialize(filename: '')
