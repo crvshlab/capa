@@ -1,8 +1,7 @@
 require_relative 'string'
 require_relative 'helper'
-require_relative 'recorder'
 
-class EmulatorRecorder < Recorder
+class EmulatorRecorder
   def initialize(filename: '')
     abort('Please provide a name for the video') if filename.to_s.empty?
     @filename = filename
