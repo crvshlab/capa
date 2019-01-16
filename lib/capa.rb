@@ -1,7 +1,6 @@
-require 'capa/string'
-require 'capa/helper'
-require 'capa/emulator_recorder'
-require 'capa/simulator_recorder'
-require 'capa/gif_generator'
-require 'capa/version'
+require_relative 'capa/string'
+require_relative 'capa/helper'
+require_relative 'capa/recorder_factory'
+require_relative 'capa/gif_generator'
+require_relative 'capa/version'
 

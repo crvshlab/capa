@@ -1,4 +1,4 @@
-require 'capa/string'
+require_relative 'string'
 
 class SimulatorRecorder
   def initialize(filename: '')

@@ -1,5 +1,5 @@
-require 'capa/string'
-require 'capa/helper'
+require_relative 'string'
+require_relative 'helper'
 
 class EmulatorRecorder
   def initialize(filename: '')

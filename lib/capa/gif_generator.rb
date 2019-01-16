@@ -1,4 +1,4 @@
-require 'capa/string'
+require_relative 'string'
 
 # module Capa
   class GIFGenerator
